@@ -131,3 +131,24 @@ class FeatureEngineering:
 if __name__ == "__main__":
     fe = FeatureEngineering()
     fe.run()
+
+
+# Module-level helper functions for easier imports in tests and other modules
+def load_data():
+    """Load data from the configured source and return a DataFrame.
+
+    This wraps `FeatureEngineering.load_data` so callers can do:
+    `from data.create_datasets import load_data` in tests or scripts.
+    """
+    fe = FeatureEngineering()
+    return fe.load_data()
+
+
+def create_features(df):
+    """Create features on the provided DataFrame.
+
+    Wraps `FeatureEngineering.create_features` to allow importing directly
+    from the module in tests.
+    """
+    fe = FeatureEngineering()
+    return fe.create_features(df)
